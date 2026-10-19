@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>مصمم الأشكال الهندسية AR</title>
+<script>if(location.hash.indexOf('v=1')>-1)document.documentElement.className='viewer';</script>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#efeae0;--fg:#1d1d1b;--panel:rgba(255,255,255,.92);--accent:#0f766e;--accent-fg:#fff;--border:#d6d0c2;color-scheme:light dark}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181b;--fg:#f1efe9;--panel:rgba(30,34,38,.92);--accent:#2dd4bf;--accent-fg:#06201c;--border:#3a4046}}
 :root[data-theme="dark"]{--bg:#15181b;--fg:#f1efe9;--panel:rgba(30,34,38,.92);--accent:#2dd4bf;--accent-fg:#06201c;--border:#3a4046}
 *{box-sizing:border-box}
+.viewer body{background:#000}.viewer #gl{visibility:hidden}.viewer #designer,.viewer #hint,.viewer #bar{display:none}
 html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;overflow:hidden}
 #stage{position:relative;width:100%;height:100%;overflow:hidden}
