@@ -25,10 +25,10 @@ button.pri{padding:10px 14px;font-weight:600}
 input[type=color]{width:42px;height:36px;border:1px solid var(--border);border-radius:8px;background:none;padding:2px}
 label{display:flex;gap:6px;align-items:center;font-size:14px}
 .hint{pointer-events:none;text-align:center;font-size:13px;background:var(--panel);border-radius:12px;padding:8px 12px;margin:0 auto 8px;width:fit-content;max-width:92%}
-#modal{position:absolute;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:5;padding:16px}
-#modal .box{background:var(--panel);background-color:var(--bg);border-radius:18px;padding:18px;text-align:center;max-width:340px;width:100%;border:1px solid var(--border)}
-#qr{background:#fff;padding:12px;border-radius:12px;display:inline-block}
-#qr img,#qr canvas{display:block}
+#modal{position:absolute;inset:0;background:#fff;display:none;align-items:center;justify-content:center;z-index:5;padding:16px}
+#modal .box{background:var(--panel);background-color:var(--bg);border-radius:18px;padding:6px;text-align:center;max-width:170px;width:100%;border:1px solid var(--border)}
+#qr{background:#fff;padding:4px;border-radius:12px;display:inline-block}
+#qr canvas,#qr img{position:static!important;inset:auto!important;width:110px!important;height:110px!important}
 #lnk{font-size:11px;word-break:break-all;opacity:.7;margin:10px 0;direction:ltr;max-height:60px;overflow:auto}
 #msg{font-size:13px;margin-top:6px;min-height:1em}
 </style>
@@ -58,19 +58,8 @@ label{display:flex;gap:6px;align-items:center;font-size:14px}
     <div id="msg" style="text-align:center"></div>
   </div>
 
-  <div id="modal">
-    <div class="box">
-      <h3 style="margin:0 0 10px">امسح الرمز لعرض الشكل</h3>
-      <div id="qr"></div>
-      <div id="lnk"></div>
-      <div class="row" style="justify-content:center">
-        <button id="copy">نسخ الرابط</button>
-        <button id="close" class="pri">إغلاق</button>
-      </div>
-      <p style="font-size:12px;opacity:.7;margin:10px 0 0">اضغط مطولًا على الرمز لحفظه كصورة</p>
-    </div>
+  <div id="modal"><div id="qr"></div></div>
   </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -199,13 +188,9 @@ if(viewer){
     var url=base+'#v=1&s='+state.s+'&c='+state.c.slice(1)+'&w='+(state.w?1:0);
     var q=$('qr');q.innerHTML='';
     try{new QRCode(q,{text:url,width:220,height:220,correctLevel:QRCode.CorrectLevel.M})}catch(e){q.textContent='تعذر إنشاء الرمز'}
-    $('lnk').textContent=url;
-    $('modal').style.display='flex';
-    $('copy').onclick=function(){
-      try{navigator.clipboard.writeText(url);$('copy').textContent='تم النسخ'}catch(e){}
-    };
+        $('modal').style.display='flex';
   };
-  $('close').onclick=function(){$('modal').style.display='none'};
+  $('modal').onclick=function(){$('modal').style.display='none'};
 }
 })();
 </script>
