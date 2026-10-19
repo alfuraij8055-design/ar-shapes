@@ -156,7 +156,7 @@ async function startCam(){
   var m=$('msg');
   try{
     var st=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
-    var v=$('cam');v.srcObject=st;await v.play();v.style.display='block';
+    var v=$('cam');v.srcObject=st;await v.play();v.style.display='block';canvas.style.visibility='visible';
     m.textContent='';$('camBtn').style.display='none';
   }catch(err){
     m.textContent='تعذر تشغيل الكاميرا. اسمح بالوصول للكاميرا ثم اضغط الزر.';
@@ -167,7 +167,7 @@ $('camBtn').onclick=startCam;
 
 /* designer UI */
 if(viewer){
-  $('designer').style.display='none';$('qrBtn').style.display='none';$('hint').style.display='none';$('bar').style.display='none';startCam();
+  $('designer').style.display='none';$('qrBtn').style.display='none';$('hint').style.display='none';$('bar').style.display='none';canvas.style.visibility='hidden';startCam();
 }else{
   var box=$('shapes');
   Object.keys(SHAPES).forEach(function(k){
